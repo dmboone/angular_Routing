@@ -2,9 +2,26 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Servers</a></li>
-        <li role="presentation"><a href="#">Users</a></li>
+        <!-- routerLinkActive directive attaches a specific class to whichever route is active -->
+         <!-- routerLinkActiveOptions will only activate the routerLinkActive class if it's the full path not just part of the path; so keeps home from always being highlighted -->
+        <li 
+        role="presentation" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/"> <!-- using the router link directive to link-->
+            Home
+          </a> 
+        </li> 
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="servers"> <!-- you can remove the slash and this would also work since it's in the app component; but if in some other html file you would need the slash before -->
+            Servers
+          </a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['users']"> <!-- this also works -->
+            Users
+          </a>
+        </li> 
       </ul>
     </div>
   </div>
