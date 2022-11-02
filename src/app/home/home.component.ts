@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLoadServers(){
-    this.router.navigate(['/servers']); // allows us to navigate to the servers route within a method
+  onLoadServer(id: number){
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'}); // allows us to navigate to the servers route within a method
     // the slash gives us an absolute path
   }
 }

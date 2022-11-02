@@ -29,6 +29,10 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
   {
     path: 'servers',
     component: ServersComponent
+  },
+  {
+    path: 'servers/:id/edit',
+    component: EditServerComponent
   }
 ];
 
