@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServersService } from './servers.service';
 
 @Component({
@@ -9,10 +10,17 @@ import { ServersService } from './servers.service';
 export class ServersComponent implements OnInit {
   public servers: {id: number, name: string, status: string}[] = [];
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService, 
+              private router: Router,
+              private route: ActivatedRoute) { // injects the currently active route
 
-  ngOnInit() {
+  }
+
+  ngOnInit(){
     this.servers = this.serversService.getServers();
   }
 
+  onReload(){
+    this.router.navigate(['/servers'], {relativeTo: this.route}); // navigate method needs current active route as well to work if going to a different page
+  }
 }
