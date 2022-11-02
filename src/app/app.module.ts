@@ -23,7 +23,7 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
     component: UsersComponent // which component.html file will be shown at this path
   },
   { 
-    path: 'users/:id', // includes a dynamic part (:id) based on specific user
+    path: 'users/:id/:name', // includes a dynamic part (:id) based on specific user
     component: UserComponent
   },
   {
