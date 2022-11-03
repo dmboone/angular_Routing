@@ -12,37 +12,8 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
-
-const appRoutes: Routes = [ // contains our routes to different 'pages'
-  {
-    path: '', // empty would mean home; localhost:4200
-    component: HomeComponent
-  }, 
-  { 
-    path: 'users', // will translate to localhost:4200/users
-    component: UsersComponent, // which component.html file will be shown at this path
-    children: [
-      { 
-        path: ':id/:name', // includes a dynamic part (:id) based on specific user
-        component: UserComponent
-      }
-    ]
-  },
-  {
-    path: 'servers',
-    component: ServersComponent, 
-    children: [
-      {
-        path: ':id', // since children this means servers/id
-        component: ServerComponent
-      },
-      {
-        path: ':id/edit', // since children this means servers/id/edit
-        component: EditServerComponent
-      }
-    ]
-  }
-];
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -52,12 +23,13 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes), // need to import; .forRoot registers our routes in this Angular app
+    AppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
