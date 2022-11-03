@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
@@ -25,6 +26,7 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
   },
   {
     path: 'servers',
+    canActivate: [AuthGuard], // servers and all child routes are now only accessible if auth-guard returns true, which will depend on auth service
     component: ServersComponent, 
     children: [
       {
