@@ -20,23 +20,27 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
   }, 
   { 
     path: 'users', // will translate to localhost:4200/users
-    component: UsersComponent // which component.html file will be shown at this path
-  },
-  { 
-    path: 'users/:id/:name', // includes a dynamic part (:id) based on specific user
-    component: UserComponent
+    component: UsersComponent, // which component.html file will be shown at this path
+    children: [
+      { 
+        path: ':id/:name', // includes a dynamic part (:id) based on specific user
+        component: UserComponent
+      }
+    ]
   },
   {
     path: 'servers',
-    component: ServersComponent
-  },
-  {
-    path: 'servers/:id',
-    component: ServerComponent
-  },
-  {
-    path: 'servers/:id/edit',
-    component: EditServerComponent
+    component: ServersComponent, 
+    children: [
+      {
+        path: ':id', // since children this means servers/id
+        component: ServerComponent
+      },
+      {
+        path: ':id/edit', // since children this means servers/id/edit
+        component: EditServerComponent
+      }
+    ]
   }
 ];
 

@@ -14,9 +14,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
+    <router-outlet></router-outlet> <!-- added a second router outlet here so we can now display individual server info and main server page side by side -->
+    <!-- <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
     <app-edit-server></app-edit-server>
-    <hr>
+    <hr> -->
     <!-- <app-server></app-server> -->
   </div>
 </div>
