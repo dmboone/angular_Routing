@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
@@ -42,9 +43,14 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
       }
     ]
   },
+//   {
+//     path: 'not-found',
+//     component: PageNotFoundComponent
+//   },
   {
     path: 'not-found',
-    component: PageNotFoundComponent
+    component: ErrorPageComponent,
+    data: {message: 'Page not found!'} // passing static data
   },
   // wildcard route to cover any unrecognized path; must be last path listed
   { path: '**', redirectTo: '/not-found', pathMatch: 'full'} // can redirect to other route; pathM
