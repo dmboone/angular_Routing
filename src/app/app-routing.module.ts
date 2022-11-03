@@ -26,7 +26,8 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
   },
   {
     path: 'servers',
-    canActivate: [AuthGuard], // servers and all child routes are now only accessible if auth-guard returns true, which will depend on auth service
+    // canActivate: [AuthGuard], // servers main route and all child routes are now only accessible if auth-guard returns true, which will depend on auth service
+    canActivateChild: [AuthGuard], // can protect just the child routes while the main path (servers) will still be accessible :)
     component: ServersComponent, 
     children: [
       {
