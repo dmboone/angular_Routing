@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 import { ServersService } from '../servers.service';
 
@@ -15,14 +15,20 @@ export class ServerComponent implements OnInit {
     private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id']; //the plus converts the id from a string to a number, which is what it should be otherwise the link won't work
-    this.server = this.serversService.getServer(1);
-    this.route.params
+    this.route.data
       .subscribe(
-        (params: Params) => {
-          this.server = this.serversService.getServer(+params['id']); //the plus converts the id from a string to a number, which is what it should be otherwise the link won't work
+        (data: Data) => {
+          this.server = data['server']; // the name in parenthesis should match the name you defined in the resolve property in app-routing-module
         }
       );
+    // const id = +this.route.snapshot.params['id']; //the plus converts the id from a string to a number, which is what it should be otherwise the link won't work
+    // this.server = this.serversService.getServer(1);
+    // this.route.params
+    //   .subscribe(
+    //     (params: Params) => {
+    //       this.server = this.serversService.getServer(+params['id']); //the plus converts the id from a string to a number, which is what it should be otherwise the link won't work
+    //     }
+    //   );
   }
 
   onEdit(){

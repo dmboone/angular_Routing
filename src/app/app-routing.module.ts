@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent } from './servers/servers.component';
 import { UserComponent } from './users/user/user.component';
@@ -34,7 +35,8 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
     children: [
       {
         path: ':id', // since children this means servers/id
-        component: ServerComponent
+        component: ServerComponent,
+        resolve: {server: ServerResolver} // will map the data from the ServerResolver to this server object we have defined here
       },
       {
         path: ':id/edit', // since children this means servers/id/edit
