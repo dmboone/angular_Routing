@@ -60,6 +60,7 @@ const appRoutes: Routes = [ // contains our routes to different 'pages'
 
 @NgModule({
     imports: [
+        // RouterModule.forRoot(appRoutes, {useHash: true}), // can choose to use useHash which informs web server to only focus on the part before the hash; so it'll run even on servers that don't return the index.html file in case of 404 errors
         RouterModule.forRoot(appRoutes), // need to import; .forRoot registers our routes in this Angular app
     ],
     exports: [RouterModule]
